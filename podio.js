@@ -4,28 +4,28 @@ var Q = require('q'),
 	merge = require('merge');
 
 	// Areas
-	var Authentication = require('./area/authentication');
+	var Authentication = require('./areas/authentication');
 
 function Podio(clientId, clientSecret, options) {
 
-	var defaults = {
- 		baseUrl = 'https://api.podio.com'
-	};
+    var defaults = {
+        baseUrl : 'https://api.podio.com'
+    };
 
-	this.clientId = clientId,
-	this.clientSecret= clientSecret,
+    this.clientId = clientId,
+    this.clientSecret = clientSecret,
 
-	this.options = merge(defaults, options);
+    this.options = merge(defaults, options);
 
-	this.auth = {
-		accessToken : null,
-		refreshToken : null,
-		expiresIn : 0,
-		scope : ''
-	}
+    this.auth = {
+        accessToken : null,
+        refreshToken : null,
+        expiresIn : 0,
+        scope : ''
+    }
 
- 	// Initialize areas
- 	this.authentication = new Authentication(this);
+    // Initialize areas
+    this.authentication = new Authentication(this);
 
 }
 
@@ -57,9 +57,7 @@ Podio.prototype.request = function(method, url, data, options) {
 
 	var dfd = new Q.defer();
 
-	if(options.baseUrl) {
-		url = options.baseUrl + url;
-	}
+    url = this.options.baseUrl + url;
 
 	var headers = {};
 

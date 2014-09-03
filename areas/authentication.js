@@ -21,13 +21,13 @@ Authentication.prototype.authenticate = function(grantType, options) {
     var url = '/oauth/token';
 
     var params = merge({
-        grant_type: grantType
+        grant_type: grantType,
         client_id: this.client.clientId,
         client_secret: this.client.clientSecret
     }, options);
 
 
-    var req = this.citrix.post(url, params, {});
+    var req = this.client.post(url, params, {});
 
     req.then(this._storeAuthData);
 
@@ -40,7 +40,7 @@ Authentication.prototype.refreshAccessToken = function() {
 
     var params = {
         grant_type: 'refresh_token',
-        refresh_token: this.citrix.auth.refreshToken
+        refresh_token: this.client.auth.refreshToken
     };
 
     var req = this.client.post(url, params, {
