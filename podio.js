@@ -6,13 +6,14 @@ var Q = require('q'),
 	// Areas
 	var Authentication = require('./area/authentication');
 
-function Podio(options) {
+function Podio(clientId, clientSecret, options) {
 
 	var defaults = {
-		consumerKey: null,
-		consumerSecret: null,
  		baseUrl = 'https://api.podio.com'
 	};
+
+	this.clientId = clientId,
+	this.clientSecret= clientSecret,
 
 	this.options = merge(defaults, options);
 
