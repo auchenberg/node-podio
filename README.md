@@ -1,4 +1,4 @@
-node-citrix-auth
+node-podio
 ================
 
-Node wrapper for Citrix SOA Authentication and Identity API's
+Node.js client for Podio.
