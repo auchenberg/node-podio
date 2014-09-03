@@ -1,0 +1,22 @@
+{
+    "author": "Kenneth Auchenberg <kenneth@auchenberg.dk>",
+    "name": "node-podio",
+    "description": "Podio node.js client",
+    "version": "0.1.2",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:auchenberg/node-podio.git"
+    },
+    "main": "podio.js",
+    "directories": {
+        "area": "area"
+    },
+    "engines": {
+        "node": ">= 0.6.x"
+    },
+    "dependencies": {
+        "q": "~1.0.1",
+        "request": "~2.34.0",
+        "merge": "~1.1.3"
+    }
+}
