@@ -1,3 +1,5 @@
+var merge = require('merge');
+
 function Authentication(client) {
 
     this.client = client;
@@ -15,14 +17,15 @@ Authentication.prototype._storeAuthData = function(authData) {
     this.client.auth.scope = authData.scope;
 }
 
-Authentication.prototype.authenticate = function(grantType, clientId, clientSecret) {
+Authentication.prototype.authenticate = function(grantType, options) {
     var url = '/oauth/token';
 
-    var params = {
+    var params = merge({
         grant_type: grantType
-        client_id: clientId,
-        client_secret: clientSecret
-    };
+        client_id: this.client.clientId,
+        client_secret: this.client.clientSecret
+    }, options);
+
 
     var req = this.citrix.post(url, params, {});
 
