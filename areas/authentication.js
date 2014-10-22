@@ -1,7 +1,6 @@
 var merge = require('merge');
 
 function Authentication(client) {
-
     this.client = client;
     this._storeAuthData = this._storeAuthData.bind(this);
 }
@@ -26,6 +25,8 @@ Authentication.prototype.authenticate = function(grantType, options) {
         client_secret: this.client.clientSecret
     }, options);
 
+    // Clear any stored auth data before calling the API
+    this._storeAuthData({});
 
     var req = this.client.post(url, params, {});
 
@@ -35,7 +36,6 @@ Authentication.prototype.authenticate = function(grantType, options) {
 };
 
 Authentication.prototype.refreshAccessToken = function() {
-
     var url = '/oauth/token';
 
     var params = {
@@ -43,10 +43,10 @@ Authentication.prototype.refreshAccessToken = function() {
         refresh_token: this.client.auth.refreshToken
     };
 
-    var req = this.client.post(url, params, {
-        authHeader: this.authHeader,
-        baseUrl: this.baseUrl
-    });
+    // Clear any stored auth data before calling the API
+    this._storeAuthData({});
+
+    var req = this.client.post(url, params, {});
 
     req.then(this._storeAuthData);
 
