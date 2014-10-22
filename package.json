@@ -2,7 +2,7 @@
     "author": "Kenneth Auchenberg <kenneth@auchenberg.dk>",
     "name": "node-podio",
     "description": "Podio node.js client",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "repository": {
         "type": "git",
         "url": "git@github.com:auchenberg/node-podio.git"
